@@ -29,7 +29,12 @@ export class RegisterComponent {
   passwordsMatch(formGroup: FormGroup): null | object {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { mismatch: true };
+    if (password !== confirmPassword) {
+      formGroup.get('confirmPassword')?.setErrors({ mismatch: true });
+      return { mismatch: true };
+    } else {
+      return null;
+    }
   }
 
   onSubmit(): void {

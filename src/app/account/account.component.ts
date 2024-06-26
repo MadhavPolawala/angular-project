@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class AccountComponent implements OnInit {
   accountForm: FormGroup;
-  user: any; // Define user object structure as per your application
+  user: any;
   editMode = false;
   incorrectPassword = false;
 
@@ -21,14 +21,13 @@ export class AccountComponent implements OnInit {
   ) {
     this.accountForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.minLength(6)]], // Password field is optional
-      newPassword: ['', Validators.minLength(6)], // New password field for updating password
-      // Add more fields here as per your application's user data structure
+      password: ['', [Validators.minLength(6)]],
+      newPassword: ['', Validators.minLength(6)],
     });
   }
 
   ngOnInit(): void {
-    this.loadUserData(); // Load user data when component initializes
+    this.loadUserData();
   }
 
   loadUserData(): void {
@@ -37,7 +36,6 @@ export class AccountComponent implements OnInit {
       this.user = JSON.parse(storedUser);
       this.accountForm.patchValue({
         email: this.user.email,
-        // Patch other form fields here
       });
     }
   }
@@ -48,20 +46,18 @@ export class AccountComponent implements OnInit {
 
   cancelEdit(): void {
     this.editMode = false;
-    this.incorrectPassword = false; // Reset incorrect password flag
-    this.loadUserData(); // Reload user data to discard changes
+    this.incorrectPassword = false;
+    this.loadUserData();
   }
 
   onSubmit(): void {
     if (this.accountForm.valid) {
       const { email, password, newPassword } = this.accountForm.value;
 
-      // Check current password before updating
       this.authService.verifyPassword(this.user.id, password).subscribe(
         (isPasswordCorrect) => {
           if (isPasswordCorrect) {
             if (newPassword) {
-              // Update both email and password
               this.authService
                 .updateUserWithPassword(
                   this.user.id,
@@ -71,29 +67,26 @@ export class AccountComponent implements OnInit {
                 )
                 .subscribe(() => {
                   alert('Account updated successfully');
-                  this.user.email = email; // Update user object locally
-                  localStorage.setItem('user', JSON.stringify(this.user)); // Update local storage
-                  this.editMode = false; // Exit edit mode after successful update
-                  this.incorrectPassword = false; // Reset incorrect password flag
+                  this.user.email = email;
+                  localStorage.setItem('user', JSON.stringify(this.user));
+                  this.editMode = false;
+                  this.incorrectPassword = false;
                 });
             } else {
-              // Update only email
               this.authService.updateUser(this.user.id, email).subscribe(() => {
                 alert('Account updated successfully');
-                this.user.email = email; // Update user object locally
-                localStorage.setItem('user', JSON.stringify(this.user)); // Update local storage
-                this.editMode = false; // Exit edit mode after successful update
-                this.incorrectPassword = false; // Reset incorrect password flag
+                this.user.email = email;
+                localStorage.setItem('user', JSON.stringify(this.user));
+                this.editMode = false;
+                this.incorrectPassword = false;
               });
             }
           } else {
-            // Show error message for incorrect password
             this.incorrectPassword = true;
           }
         },
         (error) => {
           console.error('Error verifying password:', error);
-          // Handle error case as per your application's requirements
         }
       );
     }

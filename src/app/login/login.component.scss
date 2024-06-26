@@ -1,0 +1,46 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  min-height: 230px;
+  height: auto;
+  justify-content: center;
+}
+
+.login-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 30px 40px;
+  background: transparent;
+  backdrop-filter: blur(9px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: white;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: url(../../assets/images/pexels-bri-schneiter-28802-346529.jpg)
+    no-repeat center center fixed;
+}
+mat-icon {
+  color: blue;
+}
+
+.register-link {
+  text-decoration: none;
+  color: rgb(167, 167, 255);
+  cursor: pointer;
+  padding-left: 1vh;
+}

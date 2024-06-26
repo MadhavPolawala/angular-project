@@ -27,11 +27,10 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe((isLoggedIn) => {
         if (isLoggedIn) {
-          // Store user data in localStorage
           localStorage.setItem('user', JSON.stringify({ email }));
           this.router.navigate(['/account']);
         } else {
-          alert('Invalid credentials');
+          alert('Username and password do not match or User does not exist');
         }
       });
     }

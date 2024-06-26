@@ -1,46 +1,56 @@
-<div class="account-container">
-    <mat-card>
-        <mat-card-title>Account Information</mat-card-title>
-        <mat-card-content *ngIf="!editMode">
-            <p>Email: {{ user.email }}</p>
-            <!-- Display other user information here -->
-            <button mat-raised-button color="primary" (click)="toggleEditMode()">Edit</button>
-        </mat-card-content>
-        <mat-card-content *ngIf="editMode">
-            <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
-                <mat-form-field appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput formControlName="email" type="email" required>
-                    <mat-error *ngIf="accountForm.get('email')?.hasError('required')">Email is required</mat-error>
-                    <mat-error *ngIf="accountForm.get('email')?.hasError('email')">Invalid email</mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>Current Password</mat-label>
-                    <input matInput formControlName="password" type="password">
-                    <mat-error *ngIf="accountForm.get('password')?.hasError('minlength')">Password must be at least 6
-                        characters</mat-error>
-                </mat-form-field>
-
-                <mat-form-field appearance="fill">
-                    <mat-label>New Password</mat-label>
-                    <input matInput formControlName="newPassword" type="password">
-                    <mat-error *ngIf="accountForm.get('newPassword')?.hasError('minlength')">Password must be at least 6
-                        characters</mat-error>
-                </mat-form-field>
-
-                <!-- Add more fields for editing user information here -->
-
-                <div *ngIf="incorrectPassword" class="error-message">
-                    Incorrect current password. Please try again.
+<div class="account-page">
+    <div class="account-container">
+        <mat-card class="account-card">
+            <mat-card-title>Account Information</mat-card-title>
+            <mat-card-content *ngIf="!editMode" class="account-info">
+                <div class="account-email">
+                    <p>Email: {{ user.email }}</p>
                 </div>
+                <div class="account-btn"><button mat-raised-button color="primary"
+                        (click)="toggleEditMode()">Edit</button>
+                    <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+                </div>
+            </mat-card-content>
 
-                <button mat-raised-button color="primary" type="submit">Update</button>
-                <button mat-raised-button color="warn" type="button" (click)="cancelEdit()">Cancel</button>
-            </form>
-        </mat-card-content>
-        <mat-card-actions *ngIf="!editMode">
-            <button mat-raised-button color="warn" (click)="logout()">Logout</button>
-        </mat-card-actions>
-    </mat-card>
+
+
+            <mat-card-content class="account-info" *ngIf="editMode">
+                <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="account-info">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" type="email" required>
+                        <mat-error *ngIf="accountForm.get('email')?.hasError('required')">Email is required</mat-error>
+                        <mat-error *ngIf="accountForm.get('email')?.hasError('email')">Invalid email</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Current Password</mat-label>
+                        <input matInput formControlName="password" type="password">
+                        <mat-error *ngIf="accountForm.get('password')?.hasError('minlength')">Password must be at least
+                            6
+                            characters</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>New Password</mat-label>
+                        <input matInput formControlName="newPassword" type="password">
+                        <mat-error *ngIf="accountForm.get('newPassword')?.hasError('minlength')">Password must be at
+                            least 6
+                            characters</mat-error>
+                    </mat-form-field>
+
+
+                    <div *ngIf="incorrectPassword" class="error-message">
+                        Incorrect current password. Please try again.
+                    </div>
+                    <div class="account-btn">
+
+                        <button mat-raised-button color="primary" type="submit">Update</button>
+                        <button mat-raised-button color="warn" type="button" (click)="cancelEdit()">Cancel</button>
+                    </div>
+                </form>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
 </div>

@@ -3,3 +3,61 @@
   font-size: 14px;
   margin-top: 8px;
 }
+
+.account-card {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 300px;
+  min-width: 500px;
+  padding: 30px 40px;
+  background: transparent;
+  backdrop-filter: blur(9px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: white;
+}
+
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  min-width: 500px;
+
+  width: 100%;
+}
+
+.account-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  min-width: 500px;
+  height: 100%;
+  width: 100%;
+  background: url(../../assets/images/pexels-bri-schneiter-28802-346529.jpg)
+    no-repeat center center fixed;
+}
+
+button {
+  width: 45%;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+}
+
+.account-btn {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+}

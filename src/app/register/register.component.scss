@@ -1,0 +1,84 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: url(../../assets/images/pexels-bri-schneiter-28802-346529.jpg)
+    no-repeat center center fixed;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 30px 40px;
+  background: transparent;
+  backdrop-filter: blur(9px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  color: white;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  min-height: 230px;
+  height: auto;
+  justify-content: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-card-content {
+  width: 100%;
+  padding: 0;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+button[mat-button] {
+  color: white;
+}
+
+button[mat-raised-button] {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mat-form-field-appearance-fill .mat-form-field-wrapper {
+  padding: 0 16px;
+}
+
+.mat-error {
+  color: red;
+  font-weight: bold;
+  margin-top: -8px;
+  margin-bottom: 16px;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.register-link {
+  padding-top: 2vh;
+}
+
+mat-icon {
+  color: blue;
+}
